@@ -23,7 +23,6 @@ body{
   justify-content: center;
 }
 
-/* soft sunrise glow */
 .sunrise{
   position: absolute;
   left: 50%;
@@ -148,7 +147,7 @@ body::after{
 
 .coming{
   max-width: 700px;
-  margin-top: 300px;
+  margin-top: 200px;
 }
 
 h1{
@@ -172,36 +171,36 @@ p{
 }
 
 /* minimal line loader */
-.loader{
-  width: 140px;
-  height: 2px;
-  background: rgba(32, 31, 31, 0.08);
-  margin: 38px auto 0;
-  overflow: hidden;
-  position: relative;
+.rotating-icon{
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
 }
 
-.loader::before{
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -30%;
-  width: 30%;
-  height: 100%;
-  background: #fff;
-  box-shadow: 0 0 12px var(--orange);
-  animation: lineMove 2s ease-in-out infinite;
+.rotating-icon img{
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+
+  animation: rotateSun 10s linear infinite;
+
+  filter:
+    drop-shadow(0 0 12px rgba(255,138,0,0.5))
+    drop-shadow(0 0 25px rgba(255,138,0,0.25));
+
+  opacity: 0.9;
+  
 }
 
-@keyframes lineMove{
-  0%{
-    left: -30%;
+@keyframes rotateSun{
+  from{
+    transform: rotate(0deg);
   }
-  100%{
-    left: 100%;
+
+  to{
+    transform: rotate(360deg);
   }
 }
-
 @media(max-width:768px){
 
   .logo img{
