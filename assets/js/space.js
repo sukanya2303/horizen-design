@@ -139,9 +139,20 @@ function animate() {
   ctx.fillRect(0, 0, W, H);
 
   /* Camera movement */
+const t = Date.now() * 0.0003;
 
-  cameraX += (((mouse.x / W) - 0.5) * 50 - cameraX) * 0.05;
-  cameraY += (((mouse.y / H) - 0.5) * 50 - cameraY) * 0.05;
+const targetX =
+  window.innerWidth < 768
+    ? Math.sin(t) * 15
+    : ((mouse.x / W) - 0.5) * 50;
+
+const targetY =
+  window.innerWidth < 768
+    ? Math.cos(t * 0.8) * 10
+    : ((mouse.y / H) - 0.5) * 50;
+
+cameraX += (targetX - cameraX) * 0.05;
+cameraY += (targetY - cameraY) * 0.05;
 
   /* Orange nebula */
 
@@ -188,6 +199,8 @@ function animate() {
     mouse.y,
     220
   );
+
+  
 
   spotlight.addColorStop(0, "rgba(255,138,0,0.035)");
   spotlight.addColorStop(1, "rgba(255,138,0,0)");
