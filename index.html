@@ -1,69 +1,102 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Horizen Design</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Horizen Design</title>
 
-    <!-- css -->
-    <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-    <!-- favicon -->
-    <!-- Standard Favicon -->
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="assets/images/logo/LOGO_BLACK BG- FAVICON.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="assets/images/logo/LOGO_BLACK BG- FAVICON.png"
-    />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- css -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
 
-    <!-- Apple Touch Icon (iOS Home Screen) -->
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="assets/images/logo/LOGO_BLACK BG- FAVICON.png"
-    />
+  <!-- favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo/LOGO_BLACK BG- FAVICON.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo/LOGO_BLACK BG- FAVICON.png" />
 
-    <!-- Fallback for older browsers -->
-    <link rel="shortcut icon" href="/favicon.ico" />
-  </head>
+  <!-- Apple Touch Icon (iOS Home Screen) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo/LOGO_BLACK BG- FAVICON.png" />
 
-  <body>
-    <div class="bg-glow"></div>
-    <div class="sunrise"></div>
-    <div class="container">
-      <div class="logo">
-        <!-- Add your logo path -->
-        <img
-          src="assets/images/logo/LOGO_BLACK BG LOGO UNIT.png"
-          alt="Horizen Design"
-        />
+  <!-- Fallback for older browsers -->
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+
+<body>
+  <div id="loader">
+    <h1 id="typing-text"></h1>
+  </div>
+
+  <div id="page-content">
+    <div id="cursor"></div>
+    <div id="cursor-ring"></div>
+    <canvas id="spaceCanvas"></canvas>
+
+    <div class="hero">
+      <div class="logo-glow"></div>
+
+      <div class="logo-img">
+        <img src="assets/images/logo/LOGO_BLACK BG LOGO UNIT.png" alt="">
       </div>
 
-      <div class="coming">
-        <h1>
-          Building The <br />
-          <span>Next Horizon</span>
-        </h1>
-        <p>Coming Soon</p>
+      <video class="logo-video" autoplay muted loop playsinline>
+        <source src="assets/images/logo/download.mp4" type="video/webm" />
+      </video>
 
-        <div class="rotating-icon">
-          <img src="assets/images/logo/LOGO_BLACK BG- FAVICON.png" alt="" />
-        </div>
+      <h1>Building The
+        Next Horizon</h1>
+
+      <p>
+        Coming Soon...
+      </p>
+
+      <div class="social">
+        <a href="https://www.instagram.com/horizen_design/"><i class="fa-brands fa-instagram"></i></a>
+        <a href="mailto:Purujit.naik@horizendesign.com"><i class="fa-solid fa-envelope"></i></a>
       </div>
+
+      
     </div>
-  </body>
+  </div>
+
+  <script src="assets/js/space.js"></script>
+  <script>
+    const text = "Horizen Design";
+    const typingText = document.getElementById("typing-text");
+
+    let index = 0;
+
+    function typeText() {
+      if (index < text.length) {
+        typingText.textContent += text.charAt(index);
+        index++;
+
+        setTimeout(typeText, 120);
+      } else {
+        setTimeout(() => {
+          const loader = document.getElementById("loader");
+          const page = document.getElementById("page-content");
+
+          loader.style.opacity = "0";
+
+          setTimeout(() => {
+            loader.style.display = "none";
+
+            page.style.visibility = "visible";
+            page.style.opacity = "1";
+          }, 800);
+
+        }, 700);
+      }
+    }
+
+    window.addEventListener("load", () => {
+      typeText();
+    });
+  </script>
+</body>
+
 </html>
